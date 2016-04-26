@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            width: 640px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            background-color: #ffffff;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-info").empty();
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id');
+            var running_time = $(this).attr('data-running_time');
+            var genre = $(this).attr('data-genre');
+            var director = $(this).attr('data-director');
+            var actors = $(this).attr('data-actors');
+            var storyline = $(this).attr('data-storyline');
+            var title = $(this).attr('data-title');
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-info").empty().append('<div class="col-xs-12"><h2 style="text-align:center;">'+title+'</h2><table class="table table-condensed table-bordered table-stripped">'
+                                        +'<tr><td><b>Running Time</b></td><td>'+running_time+'</td></tr>' 
+                                        +'<tr><td><b>Genre</b></td><td>'+genre+'</td></tr>' 
+                                        +'<tr><td><b>Director</b></td><td>'+director+'</td></tr>' 
+                                        +'<tr><td><b>Actors</b></td><td>'+actors+'</td></tr>'
+                                        +'<tr><td><b>Storyline</b></td><td>'+storyline+'</td></tr>'   
+                                        +'</table></div>');
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media col-xs-12">
+            <div class="col-xs-12" id="trailer-video-info" >
+            </div>
+            <div class="col-xs-12" id="trailer-video-container" style="height:300px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Anghelo Barboza Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div title="Release Date: 2016-12-08" class="col-md-6 col-lg-4 movie-tile text-center" 
+    data-trailer-youtube-id="ngWBddVNVZs" 
+    data-storyline="The Mayan kingdom is at the height of its opulence and power but the foundations of the empire are beginning to crumble.The leaders believe they must build more temples and sacrifice more people or their crops and citizens will die. Jaguar Paw (Rudy Youngblood), a peaceful hunter in a remote tribe, is captured along with his entire village in a raid. He is scheduled for a ritual sacrifice until he makes a daring escape and tries to make it back to his pregnant wife and son." 
+    data-running_time="2h 10m" 
+    data-genre="Thriller/Drama" 
+    data-director="Mel Gibson" 
+    data-actors="Rudy Youngblood, Dalia Hernández, Raoul Trujillo, Jonathan Brewer" 
+    data-title ="Apocalyto" 
+    data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/dvdboxart/161392/p161392_d_v8_aa.jpg" width="220" height="342">
+    <h2>Apocalyto</h2>
+    <h4>RD: 2016-12-08</h4>
+</div>
+
+<div title="Release Date: 2016-02-24" class="col-md-6 col-lg-4 movie-tile text-center" 
+    data-trailer-youtube-id="IJBnK2wNQSo" 
+    data-storyline="The survival of mankind hangs in the balance when Set (Gerard Butler), the merciless god of darkness, usurps Egypt's throne and plunges the prosperous empire into chaos and conflict. Hoping to save the world and rescue his true love, a defiant mortal named Bek (Brenton Thwaites) forms an unlikely alliance with the powerful god Horus (Nikolaj Coster-Waldau). Their battle against Set and his henchmen takes them into the afterlife and across the heavens for an epic confrontation." 
+    data-running_time="2h 8m" 
+    data-genre="Fantasy/Action" 
+    data-director="Alex Proyas" 
+    data-actors="Gerard Butler, Nikolaj Coster-Waldau, Courtney Eaton, Brenton Thwaites, Elodie Yung" 
+    data-title ="Gods of Egypt" 
+    data-toggle="modal" data-target="#trailer">
+    <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcRtOqwgh3331PNXsqGLMi215fVKC0j0Oto2viXi7d1_obsI45Kd" width="220" height="342">
+    <h2>Gods of Egypt</h2>
+    <h4>RD: 2016-02-24</h4>
+</div>
+
+<div title="Release Date: 2004-04-16" class="col-md-6 col-lg-4 movie-tile text-center" 
+    data-trailer-youtube-id="G59cD1NSbS8" 
+    data-storyline="This dark action film, based on the comic book series, follows FBI agent Frank Castle (Thomas Jane) as he transforms into the vengeful Punisher after criminals murder his family, including his wife and son. Castle is gravely injured in the attack and believed to be dead by Howard Saint (John Travolta), the crime lord who ordered the hit. Following his recovery, Castle becomes a heavily armed vigilante who will stop at nothing to exact revenge on Saint and dismantle his underworld empire." 
+    data-running_time="2h 20m" 
+    data-genre="Thiller/Drama" 
+    data-director="Jonathan Hensleigh" 
+    data-actors="Thomas Jane, John Travolta, Laura Harring, Rebecca Romijn, Samantha Mathis" 
+    data-title ="The Punisher" 
+    data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/34317/p34317_p_v8_aa.jpg" width="220" height="342">
+    <h2>The Punisher</h2>
+    <h4>RD: 2004-04-16</h4>
+</div>
+
+<div title="Release Date: 1995-02-24" class="col-md-6 col-lg-4 movie-tile text-center" 
+    data-trailer-youtube-id="s7EdQ4FqbhY" 
+    data-storyline="Vincent Vega (John Travolta) and Jules Winnfield (Samuel L. Jackson) are hitmen with a penchant for philosophical discussions. In this ultra-hip, multi-strand crime movie, their storyline is interwoven with those of their boss, gangster Marsellus Wallace (Ving Rhames) ; his actress wife, Mia (Uma Thurman) ; struggling boxer Butch Coolidge (Bruce Willis) ; master fixer Winston Wolfe (Harvey Keitel) and a nervous pair of armed robbers, 'Pumpkin' (Tim Roth) and 'Honey Bunny' (Amanda Plummer)." 
+    data-running_time="2h 58m" 
+    data-genre="Crime film/Drama film" 
+    data-director="Quentin Tarantino" 
+    data-actors="Quentin Tarantino, John Travolta, Uma Thurman, Samuel L. Jackson, Bruce Willis" 
+    data-title ="Pulp Finction" 
+    data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/15684/p15684_p_v8_ac.jpg" width="220" height="342">
+    <h2>Pulp Finction</h2>
+    <h4>RD: 1995-02-24</h4>
+</div>
+
+<div title="Release Date: 2014-07-31" class="col-md-6 col-lg-4 movie-tile text-center" 
+    data-trailer-youtube-id="B16Bo47KS2g" 
+    data-storyline="Brash space adventurer Peter Quill (Chris Pratt) finds himself the quarry of relentless bounty hunters after he steals an orb coveted by Ronan, a powerful villain. To evade Ronan, Quill is forced into an uneasy truce with four disparate misfits: gun-toting Rocket Raccoon, treelike-humanoid Groot, enigmatic Gamora, and vengeance-driven Drax the Destroyer. But when he discovers the orb's true power and the cosmic threat it poses, Quill must rally his ragtag group to save the universe." 
+    data-running_time="2h 2m" 
+    data-genre="Fantasy/Action" 
+    data-director="James Gunn" 
+    data-actors="Chris Pratt, James Gunn, Zoe Saldana, Dave Bautista, Vin Diesel" 
+    data-title ="Guardians of Galaxy" 
+    data-toggle="modal" data-target="#trailer">
+    <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcQW3LbpT94mtUG1PZIIzJNxmFX399wr_NcvoppJ82k7z99Hx6in" width="220" height="342">
+    <h2>Guardians of Galaxy</h2>
+    <h4>RD: 2014-07-31</h4>
+</div>
+
+<div title="Release Date: 1997-12-20" class="col-md-6 col-lg-4 movie-tile text-center" 
+    data-trailer-youtube-id="4MpZyOdx4cs" 
+    data-storyline="A gentle Jewish-Italian waiter, Guido Orefice (Roberto Benigni), meets Dora (Nicoletta Braschi), a pretty schoolteacher, and wins her over with his charm and humor. Eventually they marry and have a son, Giosue (Giorgio Cantarini). Their happiness is abruptly halted, however, when Guido and Giosue are separated from Dora and taken to a concentration camp. Determined to shelter his son from the horrors of his surroundings, Guido convinces Giosue that their time in the camp is merely a game." 
+    data-running_time="2h 2m" 
+    data-genre="Drama film/Comedy-drama" 
+    data-director="Roberto Benigni" 
+    data-actors="Roberto Benigni, Giorgio Cantarini, Nicoletta Braschi, Giustino Durano, Horst Buchholz" 
+    data-title ="Life Is Beautiful" 
+    data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/22005/p22005_p_v8_aa.jpg" width="220" height="342">
+    <h2>Life Is Beautiful</h2>
+    <h4>RD: 1997-12-20</h4>
+</div>
+
+    </div>
+  </body>
+</html>
