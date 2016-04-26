@@ -36,7 +36,8 @@ Movies have the following properties, which are all strings:
 * `director`
 * `release_date`
 * `actors`
-#### Example to instantiate a Movie Class
+
+### Example to instantiate a Movie Class
 ```
 apocalyto = media.Movie('Apocalyto'
                         ,"The Mayan kingdom is at the height of its opulence and power but the foundations"
